@@ -20,6 +20,7 @@ application {
 
 dependencies {
     implementation("net.objecthunter:exp4j:0.4.8")
+    implementation("org.fusesource.jansi:jansi:2.4.0")
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 }

@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+import static org.fusesource.jansi.Ansi.ansi;
+
 public class Login {
     public Login() {
         Scanner in = new Scanner(System.in);
@@ -35,7 +37,7 @@ public class Login {
 
             if (DumpOS.defPasswd.equals(passwd)) {
                 DumpOS.passwd = passwd;
-                System.out.println("Last login: " + now.format(fmt));
+                System.out.println("Last login: " + ansi().fgCyan().a(now.format(fmt)).reset());
                 break;
             }
             System.err.println("Password incorrect.");
