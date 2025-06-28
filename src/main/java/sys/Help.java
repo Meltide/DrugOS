@@ -8,6 +8,7 @@ public class Help {
         put("time", "Show the current time");
         put("calc", "Simple calculator");
         put("help", "Show the help of DumpOS");
+        put("ls", "View the directory");
         put("clear", "Clear the screen");
         put("exit", "Log out");
         put("shutdown", "Shutdown the system");
