@@ -3,7 +3,7 @@ package sys;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Help {
+public class HelpManager {
     private final static Map<String, String> helpList = new HashMap<>() {{
         put("time", "Show the current time");
         put("calc", "Simple calculator");
