@@ -1,6 +1,8 @@
 package sys;
 
-import bin.*;
+import bin.Calc;
+import bin.Time;
+import sys.bin.Ls;
 
 import java.util.Arrays;
 

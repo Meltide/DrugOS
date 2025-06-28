@@ -1,4 +1,4 @@
-package bin;
+package sys.bin;
 
 import java.io.File;
 
