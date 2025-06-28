@@ -17,7 +17,7 @@ public class CmdRunner {
                 case "calc" -> new Calc();
 
                 // 系统操作
-                case "help" -> HelpManager.show();
+                case "help" -> new HelpManager(args);
                 case "ls" -> new Ls(args);
                 case "clear" -> Utils.clear();
                 case "exit", "shutdown" -> System.exit(0);
