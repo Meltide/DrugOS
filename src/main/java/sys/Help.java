@@ -1,10 +1,10 @@
 package sys;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Help {
-    private static Map<String, String> helpList = new HashMap<>() {{
+    private final static Map<String, String> helpList = new HashMap<>() {{
         put("time", "Show the current time");
         put("calc", "Simple calculator");
         put("help", "Show the help of DumpOS");
