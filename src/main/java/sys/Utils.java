@@ -48,4 +48,13 @@ public class Utils {
             System.out.flush();
         }
     }
+    
+    public static String genLogo() {
+        return 
+            "  ___                   ___  ___ \n" +
+            " |   \\ _  _ _ __  _ __ / _ \\/ __|\n" +
+            " | |) | || | '  \\| '_ \\ (_) \\__ \\\n" +
+            " |___/ \\_,_|_|_|_| .__/\\___/|___/\n" +
+            "                 |_|";
+    }
 }

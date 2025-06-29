@@ -18,7 +18,7 @@ public class FoxShell {
         while (true) {
             LocalDateTime now = LocalDateTime.now();
 
-            System.out.printf(genShell(), now.format(fmt), DumpOS.hostname, DumpOS.passwd);
+            System.out.printf(genShell(), now.format(fmt), DumpOS.user, DumpOS.hostname);
             String[] cmd = in.nextLine().trim().split(" ");
 
             if (cmd[0].isEmpty()) continue;

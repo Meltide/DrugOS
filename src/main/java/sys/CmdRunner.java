@@ -1,9 +1,7 @@
 package sys;
 
-import bin.Calc;
-import bin.Time;
-import sys.bin.Help;
-import sys.bin.Ls;
+import bin.*;
+import sys.bin.*;
 
 import java.util.Arrays;
 
@@ -23,6 +21,7 @@ public class CmdRunner {
                 case "help" -> new Help(args);
                 case "ls" -> new Ls(args);
                 case "clear" -> Utils.clear();
+                case "version" -> new Version();
                 case "exit", "shutdown" -> System.exit(0);
                 case "restart" -> new DumpOS();
                 default -> throw new IllegalArgumentException("Unknown command: " + cmd[0]);
