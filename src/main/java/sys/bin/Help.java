@@ -1,9 +1,11 @@
-package sys;
+package sys.bin;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class HelpManager {
+import static org.fusesource.jansi.Ansi.ansi;
+
+public class Help {
     private final Map<String, String> helpList = new HashMap<>() {{
         put("time", "Show the current time");
         put("calc", "Simple calculator");
@@ -15,19 +17,19 @@ public class HelpManager {
         put("restart", "Restart the system");
     }};
 
-    public HelpManager(String[] args) {
+    public Help(String[] args) {
         if (!args[0].isEmpty()) {
             if (helpList.containsKey(args[0])) {
-                System.out.println("Description of " + args[0]);
+                System.out.println(ansi().a("\u001B[44m Description of " + args[0] + " \u001B[0m"));
                 System.out.println(helpList.get(args[0]));
             } else {
-                throw new IllegalArgumentException("Unknown command: " + args[0]);
+                throw new IllegalArgumentException("Unknown command: " + ansi().fgRed().a(args[0]).reset());
             }
             return;
         }
 
         for (Map.Entry<String, String> ent : helpList.entrySet()) {
-            System.out.printf("%-15s%s\n", ent.getKey(), ent.getValue());
+            System.out.printf(ansi().a("\u001B[34m%-15s\u001B[0m%s\n").toString(), ent.getKey(), ent.getValue());
         }
     }
 }

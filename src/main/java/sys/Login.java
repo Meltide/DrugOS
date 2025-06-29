@@ -62,7 +62,7 @@ public class Login {
             "Telegram Group: t.me/MPGATeam",
             "Matrix Group:   #MPGATeam:mozilla.org\n",
             "Tips: " + Utils.choice(tipsList) + "\n",
-            "Type 'help' for help.",
+                "Type 'help' for help.\n",
         };
 
         for (String i : printList) {

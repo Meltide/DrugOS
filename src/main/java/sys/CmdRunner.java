@@ -2,9 +2,12 @@ package sys;
 
 import bin.Calc;
 import bin.Time;
+import sys.bin.Help;
 import sys.bin.Ls;
 
 import java.util.Arrays;
+
+import static org.fusesource.jansi.Ansi.ansi;
 
 public class CmdRunner {
     public static void run(String[] cmd) {
@@ -17,7 +20,7 @@ public class CmdRunner {
                 case "calc" -> new Calc();
 
                 // 系统操作
-                case "help" -> new HelpManager(args);
+                case "help" -> new Help(args);
                 case "ls" -> new Ls(args);
                 case "clear" -> Utils.clear();
                 case "exit", "shutdown" -> System.exit(0);
@@ -25,7 +28,7 @@ public class CmdRunner {
                 default -> throw new IllegalArgumentException("Unknown command: " + cmd[0]);
             }
         } catch (Exception e) {
-            System.err.println("Error: " + e.getMessage());
+            System.err.println("Error: " + ansi().fgRed().a(e.getMessage()).reset());
         }
     }
 }

@@ -16,13 +16,24 @@ repositories {
 
 application {
     mainClass.set("Main")
+    applicationDefaultJvmArgs = listOf(
+        "--enable-native-access=ALL-UNNAMED",
+        "--add-exports=java.base/sun.nio.ch=ALL-UNNAMED"
+    )
 }
 
 dependencies {
     implementation("net.objecthunter:exp4j:0.4.8")
-    implementation("org.fusesource.jansi:jansi:2.4.0")
+    implementation("org.fusesource.jansi:jansi:2.4.2")
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
+}
+
+tasks.withType<JavaExec> {
+    jvmArgs = listOf(
+        "--enable-native-access=ALL-UNNAMED",
+        "--add-exports=java.base/sun.nio.ch=ALL-UNNAMED"
+    )
 }
 
 tasks.named<JavaExec>("run") {
