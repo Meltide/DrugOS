@@ -1,10 +1,11 @@
 plugins {
     id("java")
     id("application")
+    id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
 group = "team.mpga"
-version = "1.0-SNAPSHOT"
+version = "1.0"
 
 repositories {
     maven {
