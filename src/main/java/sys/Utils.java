@@ -48,13 +48,23 @@ public class Utils {
             System.out.flush();
         }
     }
-    
+
+    public static void printa(String in) {
+        String[] printList = in.split("\n");
+        for (String s : printList) {
+            System.out.println(s);
+            System.out.flush();
+            sleepFor(0.1);
+        }
+    }
+
     public static String genLogo() {
-        return 
-            "  ___                   ___  ___ \n" +
-            " |   \\ _  _ _ __  _ __ / _ \\/ __|\n" +
-            " | |) | || | '  \\| '_ \\ (_) \\__ \\\n" +
-            " |___/ \\_,_|_|_|_| .__/\\___/|___/\n" +
-            "                 |_|";
+        return """
+                  ___               _____              \s
+                 |   \\ _ _ _  _ __ |_   _|__ __ _ _ __ \s
+                 | |) | '_| || / _` || |/ -_) _` | '  \\\s
+                 |___/|_|  \\_,_\\__, ||_|\\___\\__,_|_|_|_|
+                               |___/                   \s
+                """;
     }
 }

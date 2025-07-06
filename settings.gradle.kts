@@ -1,1 +1,1 @@
-rootProject.name = "DumpOS"
+rootProject.name = "DrugOS"

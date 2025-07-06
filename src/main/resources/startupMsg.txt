@@ -1,0 +1,16 @@
+
+DrugTeam DrugOS Codename "DrugMySick!"
+  ___               _____
+ |   \ _ _ _  _ __ |_   _|__ __ _ _ __
+ | |) | '_| || / _` || |/ -_) _` | '  \
+ |___/|_|  \_,_\__, ||_|\___\__,_|_|_|_|
+               |___/
+
+A fake system based on Java
+
+Made by:         DrugTeam Team & Other contributors
+Github Repo:     Meltide/DrugOS
+Telegram Group:  t.me/DrugTeam
+Matrix Group:    #MPGATeam:mozilla.org
+
+Type 'help' to help.

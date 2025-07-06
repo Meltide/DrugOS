@@ -9,7 +9,7 @@ import static org.fusesource.jansi.Ansi.ansi;
 
 public class CmdRunner {
     public static void run(String[] cmd) {
-        String[] args = cmd.length >= 2 ? Arrays.copyOfRange(cmd, 1, cmd.length) : new String[] {""};
+        String[] args = cmd.length >= 2 ? Arrays.copyOfRange(cmd, 1, cmd.length) : new String[] {};
 
         try {
             switch (cmd[0]) {
@@ -20,10 +20,11 @@ public class CmdRunner {
                 // 系统操作
                 case "help" -> new Help(args);
                 case "ls" -> new Ls(args);
+                case "userman" -> new UserMan(args);
                 case "clear" -> Utils.clear();
-                case "version" -> new Version();
+                case "version" -> new Version(args);
                 case "exit", "shutdown" -> System.exit(0);
-                case "restart" -> new DumpOS();
+                case "restart" -> new DrugOS();
                 default -> throw new IllegalArgumentException("Unknown command: " + cmd[0]);
             }
         } catch (Exception e) {

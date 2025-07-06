@@ -1,11 +1,11 @@
 import org.fusesource.jansi.AnsiConsole;
-import sys.DumpOS;
+import sys.DrugOS;
 
 public class Main {
     public static void main(String[] args) {
         System.setProperty("jansi.force", "true");
         AnsiConsole.systemInstall();
-        new DumpOS();
+        new DrugOS();
         AnsiConsole.systemUninstall();
     }
 }
