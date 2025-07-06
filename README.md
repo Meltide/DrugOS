@@ -23,6 +23,10 @@
 2. Windows 用户输入 `gradlew.bat shadowJar`，macOS/类UNIX用户输入 `./gradlew shadowJar`
 3. 转到 **build/libs**目录，输入 `java -jar DrugOS-xx-all.jar` 启动
 
+## 下载
+- 从 [Releases](https://github.com/Meltide/DrugOS/releases/latest) 下载最新版本
+- 从 [Github Action](https://github.com/Meltide/DrugOS/actions) 下载最新构建
+
 用户名：**root**
 <br>
 初始密码：**114514**
