@@ -27,7 +27,7 @@ jobs:
         run: ./gradlew shadowJar
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: DrugOS-Jar
           path: build/libs/*-all.jar
