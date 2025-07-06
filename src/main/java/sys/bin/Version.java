@@ -7,6 +7,7 @@ public class Version {
     public Version(String[] args) {
         if (!(args.length < 1)) {
             switch (args[0]) {
+                case "system", "sys", "drug" -> printSysVersion();
                 case "shell", "fox" -> {
                     System.out.print(ansi().fgYellow().a("""
                               ___         ___ _        _ _\s
@@ -30,6 +31,10 @@ public class Version {
             return;
         }
 
+        printSysVersion();
+    }
+
+    static void printSysVersion() {
         System.out.print(ansi().fgBlue().a(Utils.genLogo()).reset());
         System.out.println("DrugTeam DrugOS codename \"DrugMySick!\" version " + DrugOS.version);
     }
