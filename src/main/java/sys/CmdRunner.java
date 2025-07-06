@@ -2,6 +2,7 @@ package sys;
 
 import bin.*;
 import sys.bin.*;
+import sys.except.*;
 
 import java.util.Arrays;
 
@@ -25,7 +26,7 @@ public class CmdRunner {
                 case "version" -> new Version(args);
                 case "exit", "shutdown" -> System.exit(0);
                 case "restart" -> new DrugOS();
-                default -> throw new IllegalArgumentException("Unknown command: " + cmd[0]);
+                default -> throw new UnknownCommandException("Unknown command: " + cmd[0]);
             }
         } catch (Exception e) {
             System.err.println("Error: " + ansi().fgRed().a(e.getMessage()).reset());
