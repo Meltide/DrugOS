@@ -2,10 +2,10 @@ package bin;
 
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
-
-import java.util.Scanner;
-
 import static org.fusesource.jansi.Ansi.ansi;
+
+import sys.*;
+import java.util.Scanner;
 
 public class Calc {
     public Calc() {
@@ -24,6 +24,7 @@ public class Calc {
                     System.out.println("Result: " + ansi().fgBlue().a(result).reset());
                 } catch (Exception e) {
                     System.err.println("Error: " + ansi().fgRed().a(e.getMessage()).reset());
+                    DrugOS.errorCode = ErrorManager.getErrorCode(e);
                 }
             }
         }

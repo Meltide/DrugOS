@@ -11,6 +11,7 @@ import static org.fusesource.jansi.Ansi.ansi;
 public class CmdRunner {
     public static void run(String[] cmd) {
         String[] args = cmd.length >= 2 ? Arrays.copyOfRange(cmd, 1, cmd.length) : new String[] {};
+        DrugOS.errorCode = 0;
 
         try {
             switch (cmd[0]) {
@@ -22,7 +23,6 @@ public class CmdRunner {
                 case "help" -> new Help(args);
                 case "ls" -> new Ls(args);
                 case "userman" -> new UserMan(args);
-                case "clear" -> Utils.clear();
                 case "version" -> new Version(args);
                 case "exit", "shutdown" -> System.exit(0);
                 case "restart" -> new DrugOS();
@@ -30,6 +30,7 @@ public class CmdRunner {
             }
         } catch (Exception e) {
             System.err.println("Error: " + ansi().fgRed().a(e.getMessage()).reset());
+            DrugOS.errorCode = ErrorManager.getErrorCode(e);
         }
     }
 }

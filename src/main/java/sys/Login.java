@@ -1,9 +1,6 @@
 package sys;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -12,22 +9,38 @@ import java.util.Scanner;
 import static org.fusesource.jansi.Ansi.ansi;
 
 public class Login {
+    private final Scanner in = new Scanner(System.in);
+
+    private final LocalDateTime now = LocalDateTime.now();
+    private final DateTimeFormatter fmt = DateTimeFormatter.ofPattern("MMM dd yyyy, HH:mm:ss", Locale.ENGLISH);
+
     public Login() {
-        Scanner in = new Scanner(System.in);
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("MMM dd yyyy, HH:mm:ss", Locale.ENGLISH);
-
         printInfo();
+        loginUser();
+        loginPwd();
+    }
 
+    public static void printInfo() {
+        try {
+            String msg = Utils.readTxt("/sys/startupMsg.txt");
+            Utils.printa(msg);
+            System.out.println();
+        } catch (IOException e) {
+            System.err.println(ansi().a("\u001B[31mError: " + e.getMessage() + "\u001B[0m"));
+            System.exit(1);
+        }
+    }
+
+    public void loginUser() {
         String user;
         while (true) {
             System.out.print(DrugOS.hostname + " login: ");
             user = in.nextLine().trim();
-            
+
             if (user.isEmpty()) {
                 continue;
             }
-            
+
             if (DrugOS.defUser.equals(user)) {
                 DrugOS.user = user;
                 break;
@@ -35,7 +48,9 @@ public class Login {
             System.err.println("Invalid username.");
             System.err.flush();
         }
+    }
 
+    public void loginPwd() {
         while (true) {
             System.out.print("Password: ");
             String passwd = Utils.getHiddenPasswd();
@@ -47,23 +62,6 @@ public class Login {
             }
             System.err.println("Password incorrect.");
             System.err.flush();
-        }
-    }
-
-    public static void printInfo() {
-        try (InputStream is = DrugOS.class.getResourceAsStream("/startupMsg.txt");
-                BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
-            String line;
-            StringBuilder sb = new StringBuilder();
-            while ((line = reader.readLine()) != null) {
-                sb.append(line).append("\n");
-            }
-
-            Utils.printa(sb.toString());
-            System.out.println("\n");
-        } catch (IOException e) {
-            System.err.println(ansi().a("\u001B[31mError: " + e.getMessage() + "\u001B[0m"));
-            System.exit(1);
         }
     }
 }

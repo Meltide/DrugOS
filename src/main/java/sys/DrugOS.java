@@ -4,7 +4,6 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Arrays;
 import java.util.Base64;
 import java.util.Properties;
 
@@ -22,6 +21,8 @@ public class DrugOS {
     public static String user;
     public static String passwd;
 
+    public static int errorCode = 0;
+
     public DrugOS() {
         Utils.clear();
         readConfig();
@@ -35,7 +36,7 @@ public class DrugOS {
         Properties config = new Properties();
 
         try {
-            try (InputStream is = DrugOS.class.getResourceAsStream("/build.properties")) {
+            try (InputStream is = DrugOS.class.getResourceAsStream("/sys/build.properties")) {
                 prop.load(is);
                 version = prop.getProperty("version");
                 coreVersion = prop.getProperty("coreVersion");

@@ -1,0 +1,17 @@
+{
+  "Tools": {
+    "time": "Show the current time",
+    "calc": "Simple calculator"
+  },
+  "System": {
+    "help": "Show the help of DrugOS",
+    "version": "Show the version of DrugOS",
+    "ls": "View the directory",
+    "clear": "Clear the screen"
+  },
+  "Power": {
+    "exit": "Log out",
+    "shutdown": "Shutdown the system",
+    "restart": "Restart the system"
+  }
+}

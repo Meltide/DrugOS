@@ -1,10 +1,11 @@
 package sys;
 
-import java.io.Console;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+
+import static org.fusesource.jansi.Ansi.ansi;
 
 public class Utils {
     public static void sleepFor(double time) {
@@ -55,6 +56,17 @@ public class Utils {
             System.out.println(s);
             System.out.flush();
             sleepFor(0.1);
+        }
+    }
+
+    public static String readTxt(String path) throws IOException {
+        try (InputStream is = DrugOS.class.getResourceAsStream(path);
+             BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
+            String line;
+            StringBuilder sb = new StringBuilder();
+            while ((line = reader.readLine()) != null)
+                sb.append(line).append("\n");
+            return sb.toString();
         }
     }
 
