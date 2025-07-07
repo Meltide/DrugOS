@@ -8,7 +8,7 @@ import sys.*;
 import java.util.Scanner;
 
 public class Calc {
-    public Calc() {
+    public void execute(String[] args) {
         Scanner in = new Scanner(System.in);
 
         while (true) {

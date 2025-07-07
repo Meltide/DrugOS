@@ -6,13 +6,20 @@ import org.json.JSONTokener;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UncheckedIOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.fusesource.jansi.Ansi.ansi;
+import static sys.DrugOS.commands;
 
 public class Help {
+    public static final Map<String, String> usage = new HashMap<>() {{
+        put("[command]", "Show the details of the command");
+    }};
+
     private JSONObject helpData;
 
-    public Help(String[] args) {
+    public void execute(String[] args) {
         try (InputStream is = getClass().getResourceAsStream("/sys/help.json")) {
             helpData = new JSONObject(new JSONTokener(is));
         } catch (IOException e) {
@@ -44,8 +51,24 @@ public class Help {
     }
 
     private void printCommandHelp(String command, String description) {
-        System.out.println(ansi().a("\u001B[44m Description of " + command + " \u001B[0m"));
+        System.out.println(ansi().a("\u001B[44m Help for: " + command + " \u001B[0m"));
+        System.out.println("Description:");
         System.out.println(description);
+
+        System.out.println(ansi().a("\u001B[44m Usage: \u001B[0m"));
+        Class<?> cmd = commands.get(command);
+        try {
+            @SuppressWarnings("unchecked")
+            Map<String, String> usage = (Map<String, String>) cmd.getDeclaredField("usage").get(cmd);
+
+            for (Map.Entry<String, String> ent : usage.entrySet()) {
+                System.out.printf(ansi().a("  %s \u001B[32m%-15s\u001B[0m%s\n").toString(), command, ent.getKey(), ent.getValue());
+            }
+        } catch (NoSuchFieldException e) {
+            System.out.println("No usage available");
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void printAllCommands() {

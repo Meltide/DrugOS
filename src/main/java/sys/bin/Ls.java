@@ -1,18 +1,20 @@
 package sys.bin;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import static org.fusesource.jansi.Ansi.*;
 
 public class Ls {
+    public static final Map<String, String> usage = new HashMap<>() {{
+        put("[directory]", "Show the specify directory");
+    }};
+
     String dir;
     List<String> directories = new ArrayList<>();
     List<String> files = new ArrayList<>();
 
-    public Ls(String[] args) {
+    public void execute(String[] args) {
         if (args.length < 1) dir = ".";
         else dir = args[0];
 

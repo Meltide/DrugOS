@@ -7,6 +7,7 @@ import sys.except.*;
 import java.util.Arrays;
 
 import static org.fusesource.jansi.Ansi.ansi;
+import static sys.DrugOS.commands;
 
 public class CmdRunner {
     public static void run(String[] cmd) {
@@ -14,16 +15,13 @@ public class CmdRunner {
         DrugOS.errorCode = 0;
 
         try {
-            switch (cmd[0]) {
-                // 程序
-                case "time" -> new Time();
-                case "calc" -> new Calc();
+            if (commands.containsKey(cmd[0])) {
+                Class<?> command = commands.get(cmd[0]);
+                command.getMethod("execute", String[].class).invoke(command.getConstructor().newInstance(), (Object) args);
+                return;
+            }
 
-                // 系统操作
-                case "help" -> new Help(args);
-                case "ls" -> new Ls(args);
-                case "userman" -> new UserMan(args);
-                case "version" -> new Version(args);
+            switch (cmd[0]) {
                 case "exit", "shutdown" -> System.exit(0);
                 case "restart" -> new DrugOS();
                 default -> throw new UnknownCommandException("Unknown command: " + cmd[0]);

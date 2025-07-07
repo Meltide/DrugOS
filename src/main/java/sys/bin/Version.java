@@ -1,10 +1,18 @@
 package sys.bin;
 
 import sys.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.fusesource.jansi.Ansi.ansi;
 
 public class Version {
-    public Version(String[] args) {
+    public static final Map<String, String> usage = new HashMap<>() {{
+        put("[name]", "Show the specify item's version");
+    }};
+
+    public void execute(String[] args) {
         if (!(args.length < 1)) {
             switch (args[0]) {
                 case "system", "sys", "drug" -> printSysVersion();

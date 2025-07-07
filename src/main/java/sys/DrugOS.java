@@ -1,10 +1,19 @@
 package sys;
 
+import bin.Calc;
+import bin.Time;
+import sys.bin.Help;
+import sys.bin.Ls;
+import sys.bin.UserMan;
+import sys.bin.Version;
+
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Base64;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import static org.fusesource.jansi.Ansi.*;
@@ -22,6 +31,18 @@ public class DrugOS {
     public static String passwd;
 
     public static int errorCode = 0;
+
+    public static final Map<String, Class<?>> commands = new HashMap<>() {{
+        // Tools
+        put("time", Time.class);
+        put("calc", Calc.class);
+
+        // System
+        put("help", Help.class);
+        put("ls", Ls.class);
+        put("userman", UserMan.class);
+        put("version", Version.class);
+    }};
 
     public DrugOS() {
         Utils.clear();
