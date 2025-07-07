@@ -2,10 +2,7 @@ package sys;
 
 import bin.Calc;
 import bin.Time;
-import sys.bin.Help;
-import sys.bin.Ls;
-import sys.bin.UserMan;
-import sys.bin.Version;
+import sys.bin.*;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -42,6 +39,12 @@ public class DrugOS {
         put("ls", Ls.class);
         put("userman", UserMan.class);
         put("version", Version.class);
+        put("clear", Clear.class);
+
+        // Power
+        put("exit", Exit.class);
+        put("shutdown", Shutdown.class);
+        put("restart", Restart.class);
     }};
 
     public DrugOS() {

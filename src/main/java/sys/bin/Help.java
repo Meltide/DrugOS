@@ -28,12 +28,15 @@ public class Help {
 
         if (args.length > 0) {
             String command = args[0];
-            String description = findCommandDescription(command);
+            if (!commands.containsKey(command)) {
+                throw new IllegalArgumentException("Unknown command: " + command);
+            }
 
+            String description = findCommandDescription(command);
             if (description != null) {
                 printCommandHelp(command, description);
             } else {
-                throw new IllegalArgumentException("Unknown command: " + ansi().fgRed().a(command).reset());
+                throw new IllegalArgumentException("Unknown command: " + command);
             }
         } else {
             printAllCommands();

@@ -24,8 +24,6 @@ public class FoxShell {
             String[] cmd = in.nextLine().trim().split(" ");
 
             if (cmd[0].isEmpty()) continue;
-            else if ("clear".equals(cmd[0])) Utils.clear();
-
             CmdRunner.run(cmd);
         }
     }

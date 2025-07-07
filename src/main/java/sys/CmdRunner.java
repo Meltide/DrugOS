@@ -18,13 +18,8 @@ public class CmdRunner {
             if (commands.containsKey(cmd[0])) {
                 Class<?> command = commands.get(cmd[0]);
                 command.getMethod("execute", String[].class).invoke(command.getConstructor().newInstance(), (Object) args);
-                return;
-            }
-
-            switch (cmd[0]) {
-                case "exit", "shutdown" -> System.exit(0);
-                case "restart" -> new DrugOS();
-                default -> throw new UnknownCommandException("Unknown command: " + cmd[0]);
+            } else {
+                throw new UnknownCommandException("Unknown command: " + cmd[0]);
             }
         } catch (Exception e) {
             System.err.println("Error: " + ansi().fgRed().a(e.getMessage()).reset());
